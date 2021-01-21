@@ -27,28 +27,28 @@ class Grapher {
     g.beginDraw();
     g.background(0);
     for(int i = 0; i < linkCount; i++){
-      int v1 = vertices.get((int)random(0, vertices.size()));
-      int v2 = vertices.get((int)random(0, vertices.size()));
+      int index1 = vertices.get((int)random(0, vertices.size()));
+      int index2 = vertices.get((int)random(0, vertices.size()));
+      
+      PVector v1 = imgUtil.indToCart(this.body.indices.get(index1));
+      PVector v2 = imgUtil.indToCart(this.body.indices.get(index2));
       
       //find another vertex where the connecting line doesn't go through the
       //body's edge
-      while(intersectsEdge(v1, v2)){
-        v2 = vertices.get((int)random(0, vertices.size()));
-      }
+      //while(){
+        //interpolate between v1 and v2
+        
+        //if one of the points is not in the body then don't connect them
+        
+      //}
       
       //connect v1 and v2
-      PVector ve1 = imgUtil.indToCart(v1);
-      PVector ve2 = imgUtil.indToCart(v2);
       g.strokeWeight(1);
       g.stroke(255);
-      g.line(ve1.x, ve1.y, ve2.x, ve2.y);
+      //g.line(ve1.x, ve1.y, ve2.x, ve2.y);
       
     }
     g.endDraw();
-  }
-  
-  boolean intersectsEdge(int v1, int v2){
-    return false;
   }
   
   PGraphics getGrahipcs(){
