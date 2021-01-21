@@ -21,8 +21,6 @@ class Grapher {
       int random = (int)random(0, this.body.indices.size());
       if(vertices.contains(random) == false){
         vertices.add(random);
-      }else{
-        i--;
       }
     }
   //connect vertices randomly (if they don't intersect with any of the edges)
