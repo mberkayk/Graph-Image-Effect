@@ -30,6 +30,8 @@ class Grapher {
       int v1 = vertices.get((int)random(0, vertices.size()));
       int v2 = vertices.get((int)random(0, vertices.size()));
       
+      //find another vertex where the connecting line doesn't go through the
+      //body's edge
       while(intersectsEdge(v1, v2)){
         v2 = vertices.get((int)random(0, vertices.size()));
       }

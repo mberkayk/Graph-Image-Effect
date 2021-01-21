@@ -49,7 +49,7 @@ void draw(){
     
     if(mousePressed){
       selectedBody = sprtr.getBodyByID(hoverID);
-      graph = new Grapher(width, height, selectedBody, 100, 300);
+      graph = new Grapher(input.width, input.height, selectedBody, 100, 300);
     }  
   }else{
     image(graph.g, 0, 0);

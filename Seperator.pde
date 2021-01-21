@@ -122,8 +122,9 @@ class Seperator {
   }
 
   void addToBody(int x, int y, int id){
-    bodyID[imgUtil.cartToInd(x, y)] = id;
-    getBodyByID(id).indices.add(imgUtil.cartToInd(x, y));
+    int index = imgUtil.cartToInd(x, y);
+    bodyID[index] = id;
+    getBodyByID(id).indices.add(index);
   }
   
   void setEdge(int x, int y, int id){
