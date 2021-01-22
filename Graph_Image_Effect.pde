@@ -10,7 +10,7 @@ Body selectedBody;
 Grapher graph;
 
 void settings(){
-  String url = "assets/deer_figure.jpeg";
+  String url = "assets/deer_figure_head.png";
   
   input = loadImage(url);
   output = loadImage(url);
@@ -49,11 +49,19 @@ void draw(){
     
     if(mousePressed){
       selectedBody = sprtr.getBodyByID(hoverID);
-      graph = new Grapher(input.width, input.height, selectedBody, 100, 300);
+      graph = new Grapher(input.width, input.height, selectedBody, 50, 100);
     }  
   }else{
     image(graph.g, 0, 0);
+    if(mousePressed){
+      graph.construct();
+    }
   }
+  
+  if(keyPressed){
+    g.save("/output/image####.png");
+  }
+  
   
   
 }
