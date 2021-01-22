@@ -5,22 +5,28 @@ class Grapher {
   ImageUtilities imgUtil;
   Body body;
   
+  int linkCount;
+  int vertexCount;
+  
   public Grapher(int w, int h, Body b, int vCount, int linkCount){
     g = createGraphics(w,h);
     g.noSmooth();
     imgUtil = new ImageUtilities(w, h);
     this.body = b;
     
-    construct(vCount, linkCount);
+    this.vertexCount = vCount;
+    this.linkCount = linkCount;
+    
+    construct();
   }
   
-  void construct(int vertexCount, int linkCount){
+  void construct(){
   
     //select random vertices
     // vertices is an array of indices of the body.indices array
     ArrayList<Integer> vertices = new ArrayList<Integer>();
     for(int i = 0; i < vertexCount; i++){
-      int random = (int)random(0, this.body.indices.size());
+      int random = (int)random(0, this.body.edgePxls.size());
       if(vertices.contains(random) == false){
         vertices.add(random);
       }
@@ -32,16 +38,16 @@ class Grapher {
       int index1 = vertices.get((int)random(0, vertices.size()));
       int index2 = vertices.get((int)random(0, vertices.size()));
       
-      PVector v1 = imgUtil.indToCart(this.body.indices.get(index1));
-      PVector v2 = imgUtil.indToCart(this.body.indices.get(index2));
+      PVector v1 = imgUtil.indToCart(this.body.edgePxls.get(index1));
+      PVector v2 = imgUtil.indToCart(this.body.edgePxls.get(index2));
       
       while(isLineInsideBody(v1, v2) == false){
         index2 = vertices.get((int)random(0, vertices.size()));
-        v2 = imgUtil.indToCart(this.body.indices.get(index2));
+        v2 = imgUtil.indToCart(this.body.edgePxls.get(index2));
       }
       
       //connect v1 and v2
-      g.strokeWeight(3);
+      g.strokeWeight(1);
       g.stroke(255, 255, 255, 50);
       g.line(v1.x, v1.y, v2.x, v2.y);
       
