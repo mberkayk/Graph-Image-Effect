@@ -39,12 +39,11 @@ class Grapher {
         index2 = vertices.get((int)random(0, vertices.size()));
         v2 = imgUtil.indToCart(this.body.indices.get(index2));
       }
-      g.line(v1.x, v1.y, v2.x, v2.y);
       
       //connect v1 and v2
       g.strokeWeight(3);
       g.stroke(255, 255, 255, 50);
-      //g.line(ve1.x, ve1.y, ve2.x, ve2.y);
+      g.line(v1.x, v1.y, v2.x, v2.y);
       
     }
     g.endDraw();
