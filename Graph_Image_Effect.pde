@@ -49,7 +49,7 @@ void draw(){
     
     if(mousePressed){
       selectedBody = sprtr.getBodyByID(hoverID);
-      graph = new Grapher(input.width, input.height, selectedBody, 50, 100);
+      graph = new Grapher(input.width, input.height, selectedBody, 100, 300);
     }  
   }else{
     image(graph.g, 0, 0);
@@ -59,7 +59,7 @@ void draw(){
   }
   
   if(keyPressed){
-    g.save("/output/image####.png");
+    g.save("./output/image####.png");
   }
   
   
