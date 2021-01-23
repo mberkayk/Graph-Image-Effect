@@ -22,6 +22,7 @@ class Grapher {
   
   void construct(){
   
+     println("constructing");
     //select random vertices
     // vertices is an array of indices of the body.indices array
     ArrayList<Integer> vertices = new ArrayList<Integer>();
@@ -53,6 +54,7 @@ class Grapher {
       
     }
     g.endDraw();
+    println("finished");
   }
   
   PGraphics getGrahipcs(){

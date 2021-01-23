@@ -9,8 +9,11 @@ Effects eff;
 Body selectedBody;
 Grapher graph;
 
+boolean preKey;
+
 void settings(){
-  String url = "assets/deer_figure_head.png";
+  //String url = "assets/deer_figure.jpeg";
+  String url = "assets/horse.jpeg";
   
   input = loadImage(url);
   output = loadImage(url);
@@ -20,16 +23,19 @@ void settings(){
 }
 
 void setup(){
-  
+  frameRate(40);
+  preKey = false;
   imgUtil = new ImageUtilities(input.width, input.height);
   eff = new Effects();
   
   eff.blur(input, output);
   eff.blur(output, output); // blurs the image twice
-  eff.compress(output, output, 2); // compress every color into one of two colors
+  eff.compress(output, output, 5); // compress every color into one of two colors
   imgUtil.copyImage(output, input);
   sprtr = new Seperator(input);
+  long time = millis();
   sprtr.seperateBodies();
+  println((millis() - time) / 1000);
 }
 
 void draw(){
@@ -49,19 +55,19 @@ void draw(){
     
     if(mousePressed){
       selectedBody = sprtr.getBodyByID(hoverID);
-      graph = new Grapher(input.width, input.height, selectedBody, 100, 300);
+      graph = new Grapher(input.width, input.height, selectedBody, 3000, 3000);
     }  
   }else{
     image(graph.g, 0, 0);
-    if(mousePressed){
-      graph.construct();
-    }
+    //if(mousePressed){
+    //  graph.construct();
+    //}
   }
   
-  if(keyPressed){
-    g.save("./output/image####.png");
+  if(keyPressed && !preKey){
+    saveFrame("./output/image####.png");
   }
   
-  
+  preKey = keyPressed;
   
 }
